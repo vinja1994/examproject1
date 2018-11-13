@@ -1,5 +1,5 @@
 //Creating connection between HTML and Javascript
-
+// Ferdi was here
 var calculate = function calculate() {
   console.log("calculate call")
 
