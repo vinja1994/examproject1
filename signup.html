@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+<div class="background" style="background-image:url(https://images.unsplash.com/photo-1527153818091-1a9638521e2a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5fce4ce8856a711cc50a14e03e58783a&auto=format&fit=crop&w=1158&q=80)">
+<h3 class="headline">Sign Up</h3>
+</div>
+<br>
+<br>
+
+
+<script src="currencyClass.js"></script>    
+<script src="login1.js"></script>
+<script src ="signup.js"></script>
+
+
+<form name="Registration">
+    <h2>Register</h2>
+    <input type="email" id="username" placeholder="Email" required>
+    <br>
+    <input type="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters" required>
+    <br>
+    <input type="password" id="repeatpw" placeholder="Repeat password"  required>
+    <br>
+    <br>
+    <select name="currencySelection" id="currencySelection" required>
+        <option value="">Choose your prefered currency</option>
+        <option value="USD">USD</option>
+        <option value="DKK">DKK</option>
+        <option value="EUR">EUR</option>
+    </select>
+    <!--
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Choose preferred currency</button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="#USD">USD</a>
+                <a href="#DKK">DKK</a>
+                <a href="#EUR">EUR</a>
+              </div>
+            </div>
+        -->
+       
+    <br>
+    <input type="button" value="Register" id="register" onclick="safeInput()">
+
+</form><br>
+</body>
+</html>
