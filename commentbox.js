@@ -6,6 +6,14 @@ code will ony run once page is ready for javascript code to execute
 Jquery is a javascript library - simplifies the language and event handling
 */
 
+class CommentBox{
+
+  constructor(username, comment){
+    this.username = username;
+    this.comment = comment;
+  }
+}
+
 
 $(document).ready(function(){
     $(".editor-header a").click(function(e){
@@ -25,6 +33,20 @@ document.execCommand(_val, false, _sizeValRe + "px");
 }
 });
 });
+
+// Universal function to retrieve user Array from LocalStorage
+var activeUser = JSON.parse(localStorage.getItem('activeUser'))
+
+var username = activeUser.username
+
+// Define comment
+
+if(localStorage.getItem('comments') == null) {
+  var comments = [];
+} else {
+  var comments = JSON.parse(localStorage.getItem('comments'));
+}
+
 
 
      // below - pulls in html div's - clarify how 
@@ -57,6 +79,40 @@ document.execCommand(_val, false, _sizeValRe + "px");
                       $totalCom.text($(".list-comments > div").length);
                     }
                   });
+                  return false;
+                }
+              });
+            });
+
+            
+            $(document).ready(function(){
+              var $text = $("#text"),
+                  $submit = $("input[type='submit']"),
+                  $listComment = $(".list-comments"),
+                  $loading = $(".loading"),
+                  _data,
+                  $totalCom = $(".total-comment");
+            
+              $totalCom.text($(".list-comments > div").length);
+            
+              $($submit).click(function() {
+                if ($text.html() == "") {
+                  alert("Please write a comment");
+                  $text.focus();
+                } else {
+                  _data = $text.html();
+                  comment = _data;
+    
+              
+                comment = new CommentBox(username, comment);
+                comments.push(comment);
+                localStorage.setItem('comments', JSON.stringify(comments)); 
+                
+                $loading.show().fadeOut(300);
+                  $listComment.append("<div>" + _data + "</div>");
+                  $text.html("");
+                  $totalCom.text($(".list-comments > div").length);
+                
                   return false;
                 }
               });

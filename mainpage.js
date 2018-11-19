@@ -40,6 +40,15 @@ function callbackFunc(response){
     var currencyTo = document.getElementById("currencyTo");
     var html = "";
 
+     // Universal function to retrieve user Array from LocalStorage
+     var activeUser = JSON.parse(localStorage.getItem('activeUser'))
+console.log(activeUser);
+   
+
+    //document.getElementById('currencyTo').value = activeUser.currency.name
+
+   
+
     //We make an array of our currencies
     var currenciesList = [];
 
@@ -61,6 +70,8 @@ function callbackFunc(response){
     localStorage.setItem("currencies", JSON.stringify(currenciesList));
 
     currencyTo.innerHTML = html;
+
+    currencyTo.value = activeUser.currency.name;
 }
 
 // set endpoint and your access key
@@ -81,9 +92,10 @@ $.ajax({
 var logout = document.getElementById('logout');
 logout.onclick = function() {
     document.location.href = 'login1.html'; 
+
+
 }
 //console.log(document.getElementById('currencyTo').)
 //document.getElementById('currencyTo').value = activeUser.currency.name
 
-// Universal function to retrieve user Array from LocalStorage
-var activeUser = JSON.parse(localStorage.getItem('activeUser'))
+

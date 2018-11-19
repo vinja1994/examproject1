@@ -37,19 +37,30 @@ function safeInput() {
     
     
     
-    if (password === repeatpw) {
+  if (password === repeatpw) {
+
       
       // Save your new user
 
 
-      if(localStorage.getItem('users') == 'undefined') {
-        var users = []
+      if(localStorage.getItem('users') == null) {
+        var users = [];
       } else {
-        var users = JSON.parse(localStorage.getItem('users'))
+        var users = JSON.parse(localStorage.getItem('users'));
       }
 
-      users.push(new User(username, password, currency))
-      localStorage.setItem('users', JSON.stringify(users))
+     // newUser
+      newUser = new User(username, password, currency);
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      
+
+      // Creates key with activeUser
+      
+      localStorage.setItem('activeUser', JSON.stringify(newUser));
+
+
+      console.log(users)
       
       document.location.href = "mainpage.html" ; 
     } else {

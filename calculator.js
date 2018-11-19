@@ -1,5 +1,5 @@
 //Creating connection between HTML and Javascript
-// Ferdi was here
+
 var calculate = function calculate() {
   console.log("calculate call")
 
@@ -8,7 +8,7 @@ var calculate = function calculate() {
   var select1 = document.getElementById("select1");
   var result = document.getElementById("result");
 
-// creating objects for rates 
+// creating objects for rates
 
 var rates = {
     USD : {
