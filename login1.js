@@ -37,7 +37,7 @@ function loginFunction() {
 
     console.log('enableLogin = ' + enableLogin)
     if (enableLogin === false){
-        alert("Wrong password or username!")
+        alert("Password or email is not correct - try again or sign up")
     } else if (enableLogin === true) {
         //document.getElementById("login").disabled = true;
         
@@ -61,10 +61,13 @@ function hashPassword(rawPassword){
     }
   }else {
     // If the password is not valid, we'll throw and error we're able to catch
+    alert("Please type in your username and password")
     throw new Error("Password or email is not correct - try again or sign up");
   }
   return String(a);
 }
+
+
 
 
 

@@ -1,5 +1,7 @@
 // Sign up form
 
+// We create a class for users
+
 class User{
 
   constructor(username, password, currency){
@@ -11,6 +13,8 @@ class User{
 
 
 
+
+
 function safeInput() {
   console.log('safeINput called')
 
@@ -18,7 +22,7 @@ function safeInput() {
     var password = document.getElementById("password").value;
     var repeatpw = document.getElementById("repeatpw").value;
     //var validpw = ValidatePw(password);
-    //var validMail = ValidateMail(username);
+    //var username = ValidatEmail(username);
 
     
     
@@ -47,15 +51,18 @@ function safeInput() {
         var users = [];
       } else {
         var users = JSON.parse(localStorage.getItem('users'));
+
+        // We alert the user about that he or she successfully is signed up and is redirected to our currency converter
+        alert("You successfully signed up and is redirected to our currency converter" )
       }
 
-     // newUser
+     // We push the newUser to local storage array callled user
       newUser = new User(username, password, currency);
       users.push(newUser);
       localStorage.setItem('users', JSON.stringify(users));
       
 
-      // Creates key with activeUser
+      // Creates key in local storage with activeUser
       
       localStorage.setItem('activeUser', JSON.stringify(newUser));
 
@@ -73,6 +80,8 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
+
+
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
 if (!event.target.matches('.dropbtn')) {
@@ -86,4 +95,15 @@ if (!event.target.matches('.dropbtn')) {
     }
   }
 }
-}}
+
+/*CHECK IF USERNAME EXISTS IN LOCAL STORAGE
+if (localStorage.getItem("username") === null) {
+  alert('User already exists - Please try again or go to the mainpage');
+    } */
+
+  }}
+
+
+
+
+

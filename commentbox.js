@@ -1,8 +1,6 @@
 /* JQuery used for comment box functions
-
 document ready function - Jquery detects that the page status is ready
 code will ony run once page is ready for javascript code to execute
-
 Jquery is a javascript library - simplifies the language and event handling
 */
 
@@ -45,7 +43,10 @@ if(localStorage.getItem('comments') == null) {
   var comments = [];
 } else {
   var comments = JSON.parse(localStorage.getItem('comments'));
+  
 }
+
+
 
 
 
@@ -53,17 +54,18 @@ if(localStorage.getItem('comments') == null) {
      $(document).ready(function(){
         var $text = $("#text"),
             $submit = $("input[type='submit']"),
-            $listComment = $(".list-comments"),
+            $listComment = $(".listComments"),
             $loading = $(".loading"),
             _data,
             $totalCom = $(".total-comment");
 
-            $totalCom.text($(".list-comments > div").length);
+            $totalCom.text($(".listComments > div").length);
+
 
       
             $($submit).click(function(){
                 if($text.html() == ""){
-                  alert("Plesea write a comment!");
+                  alert("Please write a comment!");
                   $text.focus();
                 } else{
                   _data = $text.html();
@@ -76,10 +78,12 @@ if(localStorage.getItem('comments') == null) {
                       $loading.show().fadeOut(300);
                       $listComment.append("<div>"+_data+"</div>");
                       $text.html("");
-                      $totalCom.text($(".list-comments > div").length);
+                      $totalCom.text($(".listComments > div").length);
                     }
                   });
                   return false;
+
+
                 }
               });
             });
@@ -88,12 +92,12 @@ if(localStorage.getItem('comments') == null) {
             $(document).ready(function(){
               var $text = $("#text"),
                   $submit = $("input[type='submit']"),
-                  $listComment = $(".list-comments"),
+                  $listComment = $(".listComments"),
                   $loading = $(".loading"),
                   _data,
                   $totalCom = $(".total-comment");
             
-              $totalCom.text($(".list-comments > div").length);
+              $totalCom.text($(".listComments > div").length);
             
               $($submit).click(function() {
                 if ($text.html() == "") {
@@ -111,9 +115,37 @@ if(localStorage.getItem('comments') == null) {
                 $loading.show().fadeOut(300);
                   $listComment.append("<div>" + _data + "</div>");
                   $text.html("");
-                  $totalCom.text($(".list-comments > div").length);
+                  $totalCom.text($(".listComments > div").length);
                 
                   return false;
+
+                  
                 }
+
+               // Show activeUsers previous comments on mainpage
+
+               
+              
+              var allcomments = JSON.parse(localStorage.getItem('comments'));
+              var user = JSON.parse(localStorage.getItem('activeUser'));
+              for(i=0; i < allcomments.length; i++){
+                if(user.username == allcomments.username) {
+                  alert("hej")
+
+                  console.log("hej");
+                  
+                
+               
+
+                }
+              }
+              
               });
             });
+
+            
+              
+
+            
+
+            

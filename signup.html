@@ -14,8 +14,7 @@
 <div class="background" style="background-image:url(https://images.unsplash.com/photo-1527153818091-1a9638521e2a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5fce4ce8856a711cc50a14e03e58783a&auto=format&fit=crop&w=1158&q=80)">
 <h3 class="headline">Sign Up</h3>
 </div>
-<br>
-<br>
+
 
 
 <script src="currencyClass.js"></script>    
@@ -23,35 +22,37 @@
 <script src ="signup.js"></script>
 
 
+<div class="float-left" style="width:0%; float: left;">
+    <!--A button that will return you to the login page-->
+    <input type="button" value="Return to login page" id="returnlog" onclick="location.href='login1.html';">
+    </div>
+    <br>
+
+
 <form name="Registration">
-    <h2>Register</h2>
-    <input type="email" id="username" placeholder="Email" required>
+    <h2>Register here</h2>
+    <input type = "email" id="username" placeholder="Email" required>
     <br>
-    <input type="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters" required>
+    <input type = "password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters" required>
     <br>
-    <input type="password" id="repeatpw" placeholder="Repeat password"  required>
+    <input type = "password" id="repeatpw" placeholder="Repeat password"  required>
     <br>
     <br>
+    <!-- The user can only compare USD with 3 preffered currencies in order to simplify our code-->
     <select name="currencySelection" id="currencySelection" required>
         <option value="">Choose your prefered currency</option>
         <option value="USD">USD</option>
         <option value="DKK">DKK</option>
         <option value="EUR">EUR</option>
     </select>
-    <!--
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Choose preferred currency</button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="#USD">USD</a>
-                <a href="#DKK">DKK</a>
-                <a href="#EUR">EUR</a>
-              </div>
-            </div>
-        -->
+    
        
     <br>
     <input type="button" value="Register" id="register" onclick="safeInput()">
 
 </form><br>
+
+
+
 </body>
 </html>

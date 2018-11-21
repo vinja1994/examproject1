@@ -4,7 +4,7 @@
 
 
 
-
+// Below is the calculation for the selected rates
 
 
 var calculate = function calculate() {
@@ -66,13 +66,18 @@ console.log(activeUser);
 
         html += "<option value='" + currency + "' data-rate='" + rate + "'>" + currency + "</option>";
     }
-    //local storage currencies 
+    // Fetching local storage currencies and displaying preffered currency from activeUser in currencyTo in HTML 
     localStorage.setItem("currencies", JSON.stringify(currenciesList));
 
     currencyTo.innerHTML = html;
 
     currencyTo.value = activeUser.currency.name;
-}
+
+     
+ }
+
+
+
 
 // set endpoint and your access key
 endpoint = 'live'
@@ -95,7 +100,8 @@ logout.onclick = function() {
 
 
 }
-//console.log(document.getElementById('currencyTo').)
-//document.getElementById('currencyTo').value = activeUser.currency.name
+
+
+
 
 
