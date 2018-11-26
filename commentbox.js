@@ -16,7 +16,7 @@ $(document).ready(function(){
     $(".editor-header a").click(function(e){
       e.preventDefault();
 
-// We create a dialog box. 
+// We create a dialog box. FURTHER EXPLANATIONS
 var _val = $(this).data("role"),
 _sizeValIn = parseInt($(this).data("size-val") + 1),
 _sizeValRe = parseInt($(this).data("size-val") - 1),
@@ -45,7 +45,7 @@ if(localStorage.getItem('comments') == null) {
   var comments = JSON.parse(localStorage.getItem('comments'));
 }
 
-// below - pulls in html div's - clarify how 
+// below - pulls in html div's - FURTHER EXPLANATIONS
   $(document).ready(function(){
     var $text = $("#text"),
       $submit = $("input[type='submit']"),
@@ -53,41 +53,39 @@ if(localStorage.getItem('comments') == null) {
 
     $totalCom.text($(".listComments > div").length);
 
-// If the user does not type any text an alert will appear
+// If the user does not type any text an alert will appear. Text.focus means that the commentbox area is highlighted
 
 $($submit).click(function(){
   if($text.html() == ""){
   alert("Please write a comment");
   $text.focus();
-  } else{
-  _data = $text.html();
+  }
 
 return false;
 
-    }
+
+
   });
 });
 
+// Variables below are linked to HTML
             
 $(document).ready(function(){
   var $text = $("#text"),
       $submit = $("input[type='submit']"),
       $listComment = $(".listComments"),
       $loading = $(".loading"),
-      _data,
       $totalCom = $(".total-comment");
-            
-  $totalCom.text($(".listComments > div").length);
 
-  
             
     $($submit).click(function() {
       if ($text.html() == "") {
       
-      $text.focus();
-    } else {
+        $text.focus();
+      } else {
       _data = $text.html();
       comment = _data;
+      
     
 // Pushes the users new comment into the key comments in local storage that are related to the activeUser         
 comment = new CommentBox(username, comment);
