@@ -50,7 +50,7 @@ function callbackFunc(response){ // Response indicates that we need to retrieve 
         if(i == 0){
             var currency = currencies_keys[i].substring(0,3); // With this substring we split the currencyFrom and currencyTo into their own strings
 
-// The option value refers to the users selected predefined currency
+// The option value refers to the users selected predefined currency. FURTHER EXPLANATION + CURRENCY +
             html += "<option value='" + currency + "'>" + currency + "</option>";                
         }
 

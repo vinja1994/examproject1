@@ -45,29 +45,6 @@ if(localStorage.getItem('comments') == null) {
   var comments = JSON.parse(localStorage.getItem('comments'));
 }
 
-// below - pulls in html div's - FURTHER EXPLANATIONS
-  $(document).ready(function(){
-    var $text = $("#text"),
-      $submit = $("input[type='submit']"),
-      $totalCom = $(".total-comment");
-
-    $totalCom.text($(".listComments > div").length);
-
-// If the user does not type any text an alert will appear. Text.focus means that the commentbox area is highlighted
-
-$($submit).click(function(){
-  if($text.html() == ""){
-  alert("Please write a comment");
-  $text.focus();
-  }
-
-return false;
-
-
-
-  });
-});
-
 // Variables below are linked to HTML
             
 $(document).ready(function(){
@@ -76,11 +53,13 @@ $(document).ready(function(){
       $listComment = $(".listComments"),
       $loading = $(".loading"),
       $totalCom = $(".total-comment");
+      $totalCom.text($(".listComments > div").length);
 
+// If the user does not type any text in the commentbox an alert will appear. Else the comment will be published and showed below commentbox
             
     $($submit).click(function() {
       if ($text.html() == "") {
-      
+        alert("Please write a comment");
         $text.focus();
       } else {
       _data = $text.html();
