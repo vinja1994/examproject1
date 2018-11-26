@@ -1,39 +1,37 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Login page</title>
     <link rel="stylesheet" href="login1.css">
+    <!--Link to external font from google-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 </head>
 <body>
-<!-- Left part of page -->
+<!-- We divide the page into two columms. This is the left part of the page -->
 <div class="float-left" style="width:49%; float: left;">
     <div style="text-align:center">
+
 <h1>Currency exchange</h1>
 <h4>Log in here to access live exchange rates</h4>
 
-
+<!--Here we create a form so the user can type his or hers user credentials to get access to the mainpage-->
     <form name="Login">
        
-        <input type="text" id="usrLogin" placeholder="Email" required >
-        <input type="password" id="pwLogin" placeholder="Password" required>
+        <input type="text" id="usrLogin" placeholder="Email"  >
+        <input type="password" id="pwLogin" placeholder="Password" >
         <input type="button" value="Login" id="login" onclick= "loginFunction()">
     </form>
 <p></p>
+
+<!--We create a button so the user can create an account if they are not already a user. 
+    By clicking the button the user will get redirected to the signup page-->
+
 <h2>Not a user yet?</h2>
 
 <button onclick="window.location.href = 'signup.html';">Create Account</button>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-</div></div>
+</div>
+</div>
 
 <!-- Right part of page -->
 <div class="float-right" style="width:49%; float: right";>
@@ -41,8 +39,11 @@
 </div>
 </div>
 
+<!--In order to add functionality to our page we need to connect our HTML file with our JavaScript file-->
+
 <script src="login1.js"></script>
 <script src="signup.js"></script>
+<script src ="userclass.js"></script>
 
 
 </body>

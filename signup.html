@@ -1,60 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Sign up page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
+<!--Link to external font from google-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link rel="stylesheet" href="register.css">
+
 </head>
 <body>
 <div class="background" style="background-image:url(https://images.unsplash.com/photo-1527153818091-1a9638521e2a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5fce4ce8856a711cc50a14e03e58783a&auto=format&fit=crop&w=1158&q=80)">
 <h3 class="headline">Sign Up</h3>
 </div>
 
-
-
-<script src="currencyClass.js"></script>    
-<script src="login1.js"></script>
-<script src ="signup.js"></script>
-
-
+<!-- We put the return to login page on the left side of the page. -->
 <div class="float-left" style="width:0%; float: left;">
-    <!--A button that will return you to the login page-->
+<!--A button that will return you to the login page-->
     <input type="button" value="Return to login page" id="returnlog" onclick="location.href='login1.html';">
     </div>
     <br>
 
-
+<!-- We create a registration form-->
 <form name="Registration">
     <h2>Register here</h2>
-    <input type = "email" id="username" placeholder="Email" required>
+    <input type = "email" id="username" placeholder="Email" >
     <br>
-    <input type = "password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters" required>
+    <input type = "password" id="password" placeholder="Password"  >
     <br>
-    <input type = "password" id="repeatpw" placeholder="Repeat password"  required>
+    <input type = "password" id="repeatpw" placeholder="Repeat password"  >
     <br>
     <br>
-    <!-- The user can only compare USD with 3 preffered currencies in order to simplify our code-->
+<!-- The user can only compare USD with 3 preffered currencies in order to simplify our code. Select is used to create a dropdown menu-->
     <select name="currencySelection" id="currencySelection" required>
         <option value="">Choose your prefered currency</option>
         <option value="USD">USD</option>
         <option value="DKK">DKK</option>
         <option value="EUR">EUR</option>
-    </select>
-    
-       
+    </select> 
     <br>
     <br>
     
+<!--As soon as the user clicks register our safeInput function should be intiated-->
     <input type="button" value="Register" id="register"  onclick="safeInput()" >
 
 </form><br>
 
-
+<!--In order to add functionality to our page we need to connect our HTML file with our JavaScript file-->
+<script src="currencyClass.js"></script>    
+<script src="login1.js"></script>
+<script src ="signup.js"></script>
+<script src ="userclass.js"></script>
 
 </body>
 </html>
