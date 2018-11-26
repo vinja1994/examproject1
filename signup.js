@@ -21,6 +21,26 @@ function safeInput() {
     //var validpw = ValidatePw(password);
     //var username = ValidatEmail(username);
 
+
+
+
+    if(!username.includes("@")) {
+
+    alert("E-mail must contain a @")
+    return false;
+    }
+
+    if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}/.test(password)) {
+
+    alert("Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters")
+    return false;
+
+    }
+
+
+
+
+
     
     
     password = hashPassword(password);
@@ -37,8 +57,25 @@ function safeInput() {
     } else {
       alert('Please select your favorite currency')
       return false
-    }
+    } 
   
+
+    
+
+    //loops through the already existing users, and check if the username input already exist. If it does, user is stopped
+  
+  // We parse the list of users into our function
+    var users = JSON.parse(localStorage.getItem("users"))
+
+  for(var i=0; i < users.length; i++) {
+    if (users[i].username == username) {
+    alert("Username already exists");
+    return false;               
+   }
+  }
+    
+
+
     
    
     
@@ -55,6 +92,8 @@ function safeInput() {
         // We alert the user about that he or she successfully is signed up and is redirected to our currency converter
         alert("You successfully signed up and is redirected to our currency converter" )
       }
+
+
 
      // We push the newUser to local storage array callled user
       newUser = new User(username, password, currency);
@@ -73,6 +112,13 @@ function safeInput() {
     } else {
       alert('Password and Repeat Password does not match!')
     }
+
+     //USERNAME DOES NOT EXIST ALREADY
+
+  
+} 
+
+ 
 
 
 /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
@@ -94,14 +140,9 @@ if (!event.target.matches('.dropbtn')) {
       openDropdown.classList.remove('show');
     }
   }
-}
+} }
 
-/*CHECK IF USERNAME EXISTS IN LOCAL STORAGE
-if (localStorage.getItem("username") === null) {
-  alert('User already exists - Please try again or go to the mainpage');
-    } */
 
-  }}
 
 
 
