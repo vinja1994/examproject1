@@ -12,9 +12,6 @@ class User{
 }
 
 
-
-
-
 function safeInput() {
   console.log('safeINput called')
 
@@ -30,6 +27,10 @@ function safeInput() {
     repeatpw = hashPassword(repeatpw)
     console.log(username, password, repeatpw)
     
+// We create an if statement that forces the user to pick a preffered currency. 
+//If the user tries to create account without selecting currency alert will appear 
+
+
     if(document.getElementById('currencySelection').value != ''){
       var currency = new Currency(document.getElementById('currencySelection').value, '1');
 
@@ -39,12 +40,11 @@ function safeInput() {
     }
   
     
-    
+   
     
   if (password === repeatpw) {
 
-      
-      // Save your new user
+      // If all above criteria are met the program should save the new user in local storage
 
 
       if(localStorage.getItem('users') == null) {

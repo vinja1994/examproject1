@@ -1,10 +1,6 @@
 //CURRENCY CONVERTER
 
-//Creating connection between HTML and Javascript
-
-
-
-// Below is the calculation for the selected rates
+//  Connectiong HTML currency form with the functionality from JavaScript 
 
 
 var calculate = function calculate() {
@@ -13,19 +9,23 @@ var calculate = function calculate() {
     var select = document.getElementById("currencyFrom");
     var select1 = document.getElementById("currencyTo");
     var result = document.getElementById("result");
+
+    // The calculation for the selected rates
   
      var number = amount * select1.options[select1.selectedIndex].dataset.rate; 
 
      result.value = number;
 }
   
+// The function calculate is initiated as soon as the user types a number in the amount field and displays the results immediately in the result field
+// This element allows the user to see the immediate result without pressing a calculate buttoon
+
   document.getElementById("amount").addEventListener("keyup", calculate);
   document.getElementById("currencyTo").addEventListener("change", calculate);
 
 
 
   //API collect rates 
-
 
 
 function callbackFunc(response){
@@ -45,11 +45,7 @@ function callbackFunc(response){
 console.log(activeUser);
    
 
-    //document.getElementById('currencyTo').value = activeUser.currency.name
-
-   
-
-    //We make an array of our currencies
+    //We make an array of our currencies retrieved from the API
     var currenciesList = [];
 
     for(i=0; i < currencies_keys.length; i++){
@@ -75,8 +71,6 @@ console.log(activeUser);
 
      
  }
-
-
 
 
 // set endpoint and your access key

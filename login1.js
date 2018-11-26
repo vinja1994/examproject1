@@ -20,12 +20,16 @@ function loginFunction() {
     var users = JSON.parse(localStorage.getItem('users'))
   }
 
+
+  // Looping thorugh our user
+
   for(let i=0; i<users.length; i++) {
     console.log(users[i].username)
     console.log(users[i].password)
     console.log(usr)
     console.log(pw)
 
+    // If the both username and password match our array of users in local storage then make the user to activeUser
 
       if (users[i].password == pw && users[i].username == usr) {
         console.log('Test')
@@ -35,11 +39,11 @@ function loginFunction() {
   
     }
 
+
     console.log('enableLogin = ' + enableLogin)
     if (enableLogin === false){
         alert("Password or email is not correct - try again or sign up")
     } else if (enableLogin === true) {
-        //document.getElementById("login").disabled = true;
         
         window.location.href="mainpage.html";
     }

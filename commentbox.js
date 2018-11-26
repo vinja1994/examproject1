@@ -111,6 +111,7 @@ if(localStorage.getItem('comments') == null) {
                 comment = new CommentBox(username, comment);
                 comments.push(comment);
                 localStorage.setItem('comments', JSON.stringify(comments)); 
+
                 
                 $loading.show().fadeOut(300);
                   $listComment.append("<div>" + _data + "</div>");
@@ -126,21 +127,38 @@ if(localStorage.getItem('comments') == null) {
 
                
               
+              
+              
+              });
               var allcomments = JSON.parse(localStorage.getItem('comments'));
               var user = JSON.parse(localStorage.getItem('activeUser'));
               for(i=0; i < allcomments.length; i++){
-                if(user.username == allcomments.username) {
-                  alert("hej")
+                if(user.username == allcomments[i].username) {
+                  
 
-                  console.log("hej");
+                  
+                    
+
+                    
+                    var $listComment = $(".listComments")
+                    
+                    $loading.show().fadeOut(300);
+                      $listComment.append("<div>" + allcomments[i].comment + "</div>");
+                      $text.html("");
+                      
+                    
+                      
+    
+                      
+                    
+
+                  
                   
                 
                
 
                 }
               }
-              
-              });
             });
 
             
