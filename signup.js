@@ -64,15 +64,15 @@ function safeInput() {
 
 /*
  By creating this if statement we tell our function to create a key for users.
- If the user is the first registered user, we retrieve the already created list of users to check if the credentials match an existing user */
-    
+ If the user is the first registered user, we retrieve the already created list of users to check if the credentials match an existing user 
+ We alert the user that the user is successfully signed up and is redirected to our mainpage */  
+ 
       if(localStorage.getItem('users') == null) {
         var users = [];
+        alert("You successfully signed up and is redirected to our currency converter" )
       } else {
         var users = JSON.parse(localStorage.getItem('users'));
-
-// We alert the user that the user is successfully signed up and is redirected to our mainpage
-    alert("You successfully signed up and is redirected to our currency converter" )
+        alert("You successfully signed up and is redirected to our currency converter" )
   }
 
 /* If all above criteria are met the program should save the new user in local storage.

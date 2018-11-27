@@ -16,6 +16,7 @@ function loginFunction() {
   // Once the required conditions are met we set the variable to true, which allows the user to login. 
   var enableLogin = false;
   
+  
   // Universal function to retrieve user Array from LocalStorage
   
   // Undefined is used to make a simple check to see if their are any user in local storage. Back up if it is the first customer
@@ -45,7 +46,7 @@ function loginFunction() {
     }
 // If the user credentials are incorrect, the user will be alerted and access will not be granted
     if (enableLogin === false){
-        alert("Password or email is not correct - try again or sign up")
+        alert("Password or email is incorrect - try again or sign up")
     } else if (enableLogin === true) {
          window.location.href="mainpage.html";
     }
@@ -64,7 +65,8 @@ function hashPassword(rawPassword){
       c = a & 266338304;
       a = c!==0?a^c>>21:a;
     }
-  }
+  } 
+  
   return String(a);
 }
 
