@@ -6,69 +6,71 @@ We create a function to convert currencies using API and the value entered by th
 */
 var calculate = function calculate() {
   
-    var amount = parseFloat(document.getElementById("amount").value); //entered by user
-    var select = document.getElementById("currencyFrom"); //Default USD - hardcoded to value of 1
-    var select1 = document.getElementById("currencyTo"); //Selected currency by user - currency rates retrieved from API
-    var result = document.getElementById("result"); //Calculated in function
+    var amount = parseFloat(document.getElementById("amount").value); // Sets the varaible amount to be connected with whatever value the user types in the amount field in HTML
+    var select1 = document.getElementById("currencyTo"); // Sets the variable select1 to be connected with currencyTo in HTML 
+    var result = document.getElementById("result"); // Sets the variable result to be connected with result in HTML 
 
 /* The calculation for the selected rates
-This calculation takes the users entered amount times the rates retrieved from API and returns the index from our downdown list.
+The calculation times the amount the user types with the currency and rate related to the currency
+And defines this number equals result
 */
     var number = amount * select1.options[select1.selectedIndex].dataset.rate; 
      result.value = number;
 }
   
-// The calculate function is initiated as soon as the user types a number in the amount field and displays the results immediately in the result field
+// The calculate function is initiated as soon as the user types a number in the amount field or change the currency, and displays the result immediately in the result field
 // This element allows the user to see the immediate result without pressing a calculate button
 
   document.getElementById("amount").addEventListener("keyup", calculate);
   document.getElementById("currencyTo").addEventListener("change", calculate);
 
- /* This function fetches rates for the users selected currency
-The key is the abbreviation of the currency rate name and the value is the rate connected to each currency*/
+ /* This defines currencies and rates connected witht the specific currency 
+The key is the abbreviation of the currency name and the value is the rate connected to each currency*/
 
-function callbackFunc(response){ // Response indicates that we need to retrieve information from the user
+function callbackFunc(response){ 
     var currencies = response; 
-    var currencies_keys = Object.keys(currencies.quotes); // This takes all keys into an array
+    var currencies_keys = Object.keys(currencies.quotes); 
     var currencies_values = Object.values(currencies.quotes);
 
-//This ensures the user can not change the default currencyFrom 
+//This ensures that the user can not change the default currency in the currencyFrom field 
     var currencyFrom = document.getElementById("currencyFrom");
     currencyFrom.setAttribute("disabled", "disabled"); 
 
-// When the user changes the selected currency it will be shown in the currencyTo field 
+// When define that the currencies and its values shoud go to the currencyTo field 
     var currencyTo = document.getElementById("currencyTo");
-    var html = "";
+    var currencySelection = "";
 
-// Here we use a universal function to retrieve activeUser key from LocalStorage
-     var activeUser = JSON.parse(localStorage.getItem('activeUser'))
+// Here we use a universal function to retrieve the activeUser key from LocalStorage and parse the values to the varibale activeUser
+    var activeUser = JSON.parse(localStorage.getItem('activeUser'))
    
-//This function retrieves the users predefined currency from the registration form
+// This creates a list of all the currencies 
     var currenciesList = [];
 
     for(i=0; i < currencies_keys.length; i++){
         if(i == 0){
             var currency = currencies_keys[i].substring(0,3); // With this substring we split the currencyFrom and currencyTo into their own strings
 
-// The option value refers to the users selected predefined currency. FURTHER EXPLANATION + CURRENCY +
-            html += "<option value='" + currency + "'>" + currency + "</option>";                
+// This connects the users picked currency with the rate of the currency
+            //html += "<option value='" + currency + "'>" + currency + "</option>";          
         }
 
 // With this substring we split the currencyFrom and currencyTo into their own strings and define variables
+// And defines that the varibale rate should inherit the values of the currenices_values, which is currencies and quotes  
         var currency = currencies_keys[i].substring(3,6);
         var rate = currencies_values[i];
 
-// We connect this to our currency class which consists of the specific currency and its specific rate
-// We then push the object into the currency list
+// Create an varibale called currency object that consists of the variables currency and rate 
+// Push the object into the currency list 
+// We tell our currency converter that whatever the currency the user picks it should inherit the values of the variable currency and rate
         var currencyObject = new Currency(currency, rate);
         currenciesList.push(currencyObject);
 
-        html += "<option value='" + currency + "' data-rate='" + rate + "'>" + currency + "</option>";
+        currencySelection += "<option value='" + currency + "' data-rate='" + rate + "'>" + currency + "</option>";
     }
 // Fetching local storage currencies and displaying predefined currency from activeUser in currencyTo in HTML 
     localStorage.setItem("currencies", JSON.stringify(currenciesList));
 
-    currencyTo.innerHTML = html;
+    currencyTo.innerHTML = currencySelection;
 
     currencyTo.value = activeUser.currency.name; 
  }
