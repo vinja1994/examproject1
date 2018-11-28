@@ -31,7 +31,7 @@ function safeInput() {
       
 /* We create an if statement that requires the user to pick a preffered currency. 
    If the user tries to create account without selecting currency an alert will appear and the function will stop exectuting.
-   By using `1`, it means that the user can not pick the item 0 in the currencyselection, which is "choose your prefered currency"
+   
 */
 
     if(document.getElementById('currencySelection').value != ''){
@@ -42,11 +42,9 @@ function safeInput() {
       return false
     } 
   
-/*  
- When the very first user signs up, the users key in local storage has not yet been created, which would prompt an error message.
- By creating this if statement we tell our function to create a key for users.
- If the user does not exist and is not the first registered user, we retrieve the already created list of users to check if the credentials match an existing user */
-    
+/* 
+We retrieve the key users in local storage to check if the username already exists. The function will stop if this is the case and an alert will appear informing the user 
+ */
   if(localStorage.getItem('users') == null) {
     var users = [];
   } else {
@@ -63,9 +61,9 @@ function safeInput() {
   if (password === repeatpw) {
 
 /*
- By creating this if statement we tell our function to create a key for users.
- If the user is the first registered user, we retrieve the already created list of users to check if the credentials match an existing user 
- We alert the user that the user is successfully signed up and is redirected to our mainpage */  
+ We retrieve the key "users" using getItem() if the key do not exist we create an list of users in local storage. 
+ Otherwise we use JSON.parse to transform the string of information into an object in local storage  
+ */  
  
       if(localStorage.getItem('users') == null) {
         var users = [];
@@ -75,16 +73,15 @@ function safeInput() {
         alert("You successfully signed up and is redirected to our currency converter" )
   }
 
-/* If all above criteria are met the program should save the new user in local storage.
- We push the newUser to the key called user in local storage.
- JSON.stringify is used to convert our users object into a string */
+/* If all above criteria are met the code should push the variable newUser to the key called users in local storage.
+ JSON.stringify is used to convert our users object into a string in local storage */
 
       newUser = new User(username, password, currency);
       users.push(newUser);
       localStorage.setItem('users', JSON.stringify(users));
       
-/* We create another key in local storage called activeUser - so we can connect the user class to the currency class and commentbox class.
-After the user credentials has been pushed, we redirect the user to the main page */      
+/* When the user sign up we add a list called activeUser as a key in local storage and transforms the user object into a string using JSON.stringify 
+After the user credentials has been pushed, we redirect the user to the main page if the user has met all the required specifications */      
 localStorage.setItem('activeUser', JSON.stringify(newUser));
       
       document.location.href = "mainpage.html" ; 

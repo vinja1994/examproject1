@@ -40,7 +40,7 @@ function callbackFunc(response){
     var currencyTo = document.getElementById("currencyTo");
     var currencySelection = "";
 
-// Here we use a universal function to retrieve the activeUser key from LocalStorage and parse the values to the varibale activeUser
+// Here we use a universal function to retrieve the activeUser key from LocalStorage as a string and transforms the values into JavaScript objects using JSON.parse
     var activeUser = JSON.parse(localStorage.getItem('activeUser'))
    
 // This creates a list of all the currencies 
@@ -67,7 +67,7 @@ function callbackFunc(response){
 
         currencySelection += "<option value='" + currency + "' data-rate='" + rate + "'>" + currency + "</option>";
     }
-// Fetching local storage currencies and displaying predefined currency from activeUser in currencyTo in HTML 
+//  Adding the predefined currency into the currencylist by transforming the object into a string using JSON.stringify and displaying predefined currency from activeUser in currencyTo in HTML 
     localStorage.setItem("currencies", JSON.stringify(currenciesList));
 
     currencyTo.innerHTML = currencySelection;
