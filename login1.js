@@ -18,8 +18,8 @@ function loginFunction() {
   var enableLogin = false;
   
   /*
- We retrieve the key "users" using getItem() if the key do not exist we create an list of users in local storage. 
- Otherwise we use JSON.parse to transform the string of information into an object in local storage  
+ We retrieve the key "users" using getItem() if the key users do not exist we create an list of users in local storage. 
+ Otherwise we get the list of users from localstorage 
  */  
 
   if(localStorage.getItem('users') == 'undefined') {

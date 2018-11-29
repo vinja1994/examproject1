@@ -49,9 +49,7 @@ function callbackFunc(response){
     for(i=0; i < currencies_keys.length; i++){
         if(i == 0){
             var currency = currencies_keys[i].substring(0,3); // With this substring we split the currencyFrom and currencyTo into their own strings
-
-// This connects the users picked currency with the rate of the currency
-            //html += "<option value='" + currency + "'>" + currency + "</option>";          
+        
         }
 
 // With this substring we split the currencyFrom and currencyTo into their own strings and define variables
@@ -59,7 +57,7 @@ function callbackFunc(response){
         var currency = currencies_keys[i].substring(3,6);
         var rate = currencies_values[i];
 
-// Create an varibale called currency object that consists of the variables currency and rate 
+// Create a variable called currency object that consists of the variables currency and rate 
 // Push the object into the currency list 
 // We tell our currency converter that whatever the currency the user picks it should inherit the values of the variable currency and rate
         var currencyObject = new Currency(currency, rate);
@@ -67,7 +65,7 @@ function callbackFunc(response){
 
         currencySelection += "<option value='" + currency + "' data-rate='" + rate + "'>" + currency + "</option>";
     }
-//  Adding the predefined currency into the currencylist by transforming the object into a string using JSON.stringify and displaying predefined currency from activeUser in currencyTo in HTML 
+//  Adding the list of currency objects to local storage and transforming the list to a string and displaying predefined currency from activeUser in currencyTo in HTML 
     localStorage.setItem("currencies", JSON.stringify(currenciesList));
 
     currencyTo.innerHTML = currencySelection;

@@ -44,7 +44,9 @@ function safeInput() {
   
 /* 
 We retrieve the key users in local storage to check if the username already exists. The function will stop if this is the case and an alert will appear informing the user 
- */
+ We retrieve the key "users" using getItem() if the key users do not exist we create an list of users in local storage. 
+ Otherwise we get the list of users from localstorage 
+*/ 
   if(localStorage.getItem('users') == null) {
     var users = [];
   } else {
@@ -61,8 +63,8 @@ We retrieve the key users in local storage to check if the username already exis
   if (password === repeatpw) {
 
 /*
- We retrieve the key "users" using getItem() if the key do not exist we create an list of users in local storage. 
- Otherwise we use JSON.parse to transform the string of information into an object in local storage  
+ We retrieve the key "users" using getItem() if the key users do not exist we create an list of users in local storage. 
+ Otherwise we get the list of users from localstorage   
  */  
  
       if(localStorage.getItem('users') == null) {
