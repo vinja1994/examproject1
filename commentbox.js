@@ -1,8 +1,4 @@
-/* JQuery used for comment box functions
-document ready function - Jquery detects that the page status is ready
-code will ony run once page is ready for javascript code to execute
-Jquery is a javascript library - simplifies the language and event handling
-*/
+// We create a class for commentbox
 
 class CommentBox{
 
@@ -16,7 +12,7 @@ $(document).ready(function(){
     $(".editor-header a").click(function(e){
       e.preventDefault();
 
-// We create a dialog box. FURTHER EXPLANATIONS
+// We create a comment box.
 var _val = $(this).data("role"),
 _sizeValIn = parseInt($(this).data("size-val") + 1),
 _sizeValRe = parseInt($(this).data("size-val") - 1),

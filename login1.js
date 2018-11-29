@@ -18,17 +18,17 @@ function loginFunction() {
   var enableLogin = false;
   
   /*
- We retrieve the key "users" using getItem() if the key users do not exist we create an list of users in local storage. 
- Otherwise we get the list of users from localstorage 
+ We retrieve the key "users" using getItem() if the key users do not exist we create a varibale of the list of users to avoid an error in the console. 
+ Otherwise we get the list of users from localstorage   
  */  
 
-  if(localStorage.getItem('users') == 'undefined') {
+  if(localStorage.getItem('users') == null) {
     var users = []
   } else {
     var users = JSON.parse(localStorage.getItem('users'))
   }
 
-  // Looping thorugh our users list
+  // Looping trough our users list
 
   for(var i=0; i<users.length; i++) {
     
